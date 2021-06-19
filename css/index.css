@@ -1,0 +1,22 @@
+.loginpage {
+  justify-content: center !important;
+}
+body {
+<<<<<<< HEAD
+    color:   rgb(0, 154, 61) !important;
+    padding-top: 50rem !important;
+    border: rgb(0, 154, 61);
+=======
+  color: #009a3d !important;
+  padding-top: 50rem !important;
+  border: #009a3d;
+>>>>>>> 390f675df52054ab6de3376f25239d03a59eb090
+}
+
+#password {
+  padding-top: 5000px !important;
+}
+
+.inputform {
+  display: -webkit-flex;
+}

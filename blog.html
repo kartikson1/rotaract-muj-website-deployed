@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Blog</title>
+    <meta name="description" content="RGC">
+    <meta name="keywords" content="Rotaract Green Club MUJ">
+
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+    <script type="text/javascript" src="jquery-3.1.1.js"></script>
+    <script src="js/bootstrap.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/7.16.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.16.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.16.1/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.16.1/firebase-firestore.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    
+    <!-- <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400" rel="stylesheet"> -->
+    <link rel="stylesheet" href="css/styles-merged.css">
+    <link rel="stylesheet" href="css/style.min.css">
+    <link rel="stylesheet" href="css/custom.css">
+    
+
+    <!-- Favicons -->
+    <link href="./logowhite.jpeg" rel="shortcut icon" type="image/png">
+
+    <!--[if lt IE 9]>
+      <script src="js/vendor/html5shiv.min.js"></script>
+      <script src="js/vendor/respond.min.js"></script>
+    <![endif]-->
+    <style>
+      #footer {
+  background: #14151c;
+  color:black;
+  font-size: 14px;
+  text-align: center;
+  padding-top: 5%;
+  padding-right: 0px;
+  padding-bottom: 2%;;
+  padding-left: 0px;
+}
+
+#footer h3 {
+  font-size: 36px;
+  font-weight: 700;
+  color: black;
+  position: relative;
+  font-family: "Poppins", sans-serif;
+  padding: 0;
+  margin: 0 0 15px 0;
+}
+
+#footer p {
+  font-size: 15;
+  font-style: italic;
+  padding: 0;
+  margin: 0 0 40px 0;
+}
+
+#footer .social-links {
+  margin: 0 0 40px 0;
+}
+
+#footer .social-links a {
+  font-size: 18px;
+  display: inline-block;
+  background: black;
+  color: #000000;
+
+  padding: 8px 0;
+  margin-right: 4px;
+  border-radius: 50%;
+  text-align: center;
+  width: 36px;
+  height: 36px;
+  transition: 0.3s;
+}
+
+#footer .social-links a:hover {
+  background:#22eaaa;
+  color: #fff;
+  text-decoration: none;
+}
+
+#footer .copyright {
+  margin: 0 0 5px 0;
+}
+
+#footer .credits {
+  font-size: 13px;
+}
+
+/* Wrapper */
+.icon-button {
+	background-color: white;
+	border-radius: 3.6rem;
+	cursor: pointer;
+	display: inline-block;
+	font-size: 2.0rem;
+	height: 3.6rem;
+	line-height: 3.6rem;
+	margin: 0 5px;
+	position: relative;
+	text-align: center;
+	-webkit-user-select: none;
+	   -moz-user-select: none;
+	    -ms-user-select: none;
+	        user-select: none;
+	width: 3.6rem;
+}
+
+/* Circle */
+.icon-button span {
+	border-radius: 0;
+	display: block;
+	height: 0;
+	left: 50%;
+	margin: 0;
+	position: absolute;
+	top: 50%;
+	-webkit-transition: all 0.3s;
+	   -moz-transition: all 0.3s;
+	     -o-transition: all 0.3s;
+	        transition: all 0.3s;
+	width: 0;
+}
+.icon-button:hover span {
+	width: 3.6rem;
+	height: 3.6rem;
+	border-radius: 3.6rem;
+	margin: -1.8rem;
+}
+.instagram span {
+	background-color: #791697;
+}
+.facebook span {
+	background-color: #3B5998;
+}
+.github span {
+	background-color: #db9b3c;
+}
+.linkedin span {
+	background-color: #3c54dbd0;
+}
+/* Icons */
+.icon-button i {
+	background: none;
+	color: white;
+	height: 3.6rem;
+	right: -0.75rem;
+	line-height: 2.2rem;
+	position: absolute;
+	top: 0;
+	-webkit-transition: all 0.3s;
+	   -moz-transition: all 0.3s;
+	     -o-transition: all 0.3s;
+	        transition: all 0.3s;
+	width: 3.6rem;
+	z-index: 10;
+}
+.icon-button .icon-instagram2 {
+	color: #791697;
+}
+.icon-button .icon-facebook {
+	color: #3B5998;
+}
+.icon-button .icon-github {
+	color: #db9b3c;
+}
+.icon-button .icon-linkedin {
+	color: #3c54dbd0;
+}
+.icon-button:hover .icon-instagram2,
+.icon-button:hover .icon-facebook,
+.icon-button:hover .icon-github,
+.icon-button:hover .icon-linkedin {
+	color: white;
+}
+    </style>
+  </head>
+  <body>
+<!--javascript code db related-->
+<script>
+  // Your web app's Firebase configuration
+ var firebaseConfig = {
+ apiKey: "AIzaSyBz_N36S4AX6hiU7KIctXEuMs-jrguqjb4",
+ authDomain: "form-eded5.firebaseapp.com",
+ databaseURL: "https://form-eded5.firebaseio.com",
+ projectId: "form-eded5",
+ storageBucket: "form-eded5.appspot.com",
+ messagingSenderId: "908624812937",
+ appId: "1:908624812937:web:4619ebe99812d958955f58"
+ };
+ // Initialize Firebase
+ firebase.initializeApp(firebaseConfig);
+
+ var database = firebase.database();
+
+ // Reference messages collection
+ var messagesRef = firebase.database().ref('contactformmessages');
+
+
+/* function writeData() {
+ /* firebase.database().ref("User").set({
+     comment:document.getElementById("blogcomment").value
+ }); 
+ firebase.databaseURL().ref("User").set({
+     comment:document.getElementById('blogcomment').value
+ })
+ 
+} */
+/* var comment = document.getElementById('blogcomment').value;
+function writeData(comment) {
+firebase.database().ref('users/' + userId).set({
+comment : comment
+});
+} */
+
+
+
+</script>
+
+<!--ending firebase-->
+
+<!-- START: header -->
+
+<div class="probootstrap-loader"></div>
+
+<header role="banner" class="probootstrap-header">
+<div class="container">
+  <a href="index.html" class="probootstrap-logo"><img style="height: 150px;width: 150px; border-radius: 50%;" src="logowhite.jpeg"></a>
+ 
+ <a href="#" class="probootstrap-burger-menu visible-xs" ><i>Menu</i></a>
+ <div class="mobile-menu-overlay"></div>
+
+ <nav role="navigation" class="probootstrap-nav hidden-xs">
+   <ul class="probootstrap-main-nav">
+     <li><a href="index.html">Home</a></li>
+     <li><a href="about.html">About</a></li>
+     <li class="active"><a href="blog.html">Blog</a></li>
+     <li><a href="QnA.html">QnA</a></li>
+     <li><a href="team.html">Team</a></li>
+     <li><a href="contact.html">Contact</a></li>
+   </ul>
+   <ul class="probootstrap-right-nav hidden-xs">
+     <li><a href="#"><i class="icon-twitter"></i></a></li>
+     <li><a href="https://www.facebook.com/GreenClubMUJ/" target="_blank"><i class="icon-facebook2"></i></a></li>
+     <li><a href="https://www.instagram.com/greenclubmuj/?igshid=h9r3d4o32bvz" target="_blank"><i class="icon-instagram2"></i></a></li>
+     <!-- <li>
+       <div class="form-group">
+         <button onclick="signOut()" id="signout submit" type="submit" class="btn btn-primary" name="submit">SignOut</button>
+       </div>
+     </li> -->
+   </ul>
+   <div class="extra-text visible-xs"> 
+     <a href="#" class="probootstrap-burger-menu"><i>Menu</i></a>
+     <h5>Address</h5>
+     <p>Jaipur-Ajmer Express Highway, Dehmi Kalan, Near GVK Toll Plaza, Jaipur, Rajasthan 303007    </p>
+     <h5>Connect</h5>
+     <ul class="social-buttons">
+       <li><a href="#"><i class="icon-twitter"></i></a></li>
+       <li><a href="https://www.facebook.com/GreenClubMUJ/" target="_blank"><i class="icon-facebook2"></i></a></li>
+       <li><a href="https://www.instagram.com/greenclubmuj/?igshid=h9r3d4o32bvz" target="_blank"><i class="icon-instagram2"></i></a></li>
+       <!-- <li>
+        <div class="form-group">
+          <button onclick="signOut()" id="signout submit" type="submit" class="btn btn-primary" name="submit">SignOut</button>
+        </div>
+      </li> -->
+     </ul>
+   </div>
+ </nav>
+</div>
+</header>
+<!-- END: header -->
+<section class="probootstrap-slider flexslider">
+  <ul class="slides">
+  <li style="background-image: url(header.jpeg);" class="overlay2">
+   <div class="container">
+     <div class="row">
+       <div class="col-md-12 text-center">
+         <div class="slides-text probootstrap-animate" data-animate-effect="fadeIn">
+           <h2>BLOG</h2>
+           <p>
+            RGC members contribute their skills, expertise, resources and time to help solve some of the world’s toughest problems. <br> From conducting regular seminars to promoting peace, RGC is bringing service project ideas to life.
+           </p> 
+          </div>      
+       </div>
+     </div>
+   </div>
+  </li>
+  </ul>
+  </section>
+  <!-- END: slider  -->
+  
+  <section class="probootstrap-section">
+  <div class="container">
+  <div class="row">
+   <div class="col-md-12 text-center section-heading probootstrap-animate">
+     <h2>Our Blogs</h2>
+   </div>
+  </div>
+
+
+  <button style="margin-bottom: 30px;" type="button" class="btn btn-danger btn-lg btn-block" data-toggle="collapse" data-target="#demo" aria-controls="demo" 
+  >Plantation drive</button>
+  
+  <div class="col-md-12 collapse" id="demo" style="padding-top: 2rem!important;">
+    <div  class="service left-icon probootstrap-animate"  style="border-radius: 2rem; border: 10rem; background-color:#FFD8B3;">
+      <div class="icon">
+        <img src="article (1).svg" alt="">
+      </div>
+      <div class="text" style="padding-right: 2rem;">
+       <!--  <h3 class="heading">Blog Topic One</h3> -->
+        <p>
+          Trees contribute to the environment by providing oxygen, improving air quality, climate amelioration, conserving water, preserving soil, and supporting wildlife. During the process of photosynthesis, trees take in carbon dioxide and produce the oxygen we breathe.</p><p>
+            Every year on the occasion of Mahatma Gandhi’s birth anniversary, Rotaract Green Club organises a “Plantation Drive” on the campus. Keeping the tradition alive while we’re all at our homes, RGC introduced an “Online Plantation Drive” on the 2nd of October 2020.</p><p>
+
+        </div>
+        </div>
+  </div>
+
+  <button style="margin-bottom: 30px;" type="button" class="btn btn-danger btn-lg btn-block" data-toggle="collapse" data-target="#demo" aria-controls="demo" 
+  >Mindly Sane - Adapting to the new normal</button>
+  
+  <div class="col-md-12 collapse" id="demo" style="padding-top: 2rem!important;">
+    <div  class="service left-icon probootstrap-animate"  style="border-radius: 2rem; border: 10rem; background-color:#FFD8B3;">
+      <div class="icon">
+        <img src="article (1).svg" alt="">
+      </div>
+      <div class="text" style="padding-right: 2rem;">
+       <!--  <h3 class="heading">Blog Topic One</h3> -->
+        <p>
+          The theme for this webinar was “Adapting to the new normal.” Life as we know, has changed. The pandemic has created uncertainty in our work and family lives. With no clear future in sight, and changes occurring every day, it can be difficult to adjust to this ‘new normal’. To deal with
+this issue, RGC in collaboration with Fortis Mental Healthcare organized “Mindly Sane – An
+Interactive Webinar Series” to teach everyone some new and easy ways to deal with the ‘new
+normal’.Dr. Kedar Tilwe was our third eminent speaker for the webinar on “Adapting to The
+New Normal”. He is a consultant Psychiatrist in the department of Mental Health & Behavioral
+Sciences and is currently working with Fortis Hospital, Mulund; SL Raheja Hospital, Mahim &
+Hiranandani Hospital,Vashi.From physical distancing to practicing good hand hygiene – these
+behaviours have become a part of our daily routine. The rapidly changing environment means a
+greater need for us to be agile and adaptive. It is difficult to adapt to a new environment – and
+even more so for those of us who did not like change at the best of times. Being overwhelmed
+and feeling like we are not in control of our own lives, can lead you to experience frustration and
+burn-out
+        </p>
+
+        </div>
+        </div>
+  </div>
+  
+  <button style="margin-bottom: 30px;" type="button" class="btn btn-danger btn-lg btn-block" data-toggle="collapse" data-target="#demo" aria-controls="demo" 
+  >DONATION DRIVE</button>
+  <div class="col-md-12 collapse" id="demo" style="padding-top: 2rem!important;">
+    <div  class="service left-icon probootstrap-animate"  style="border-radius: 2rem; border: 10rem; background-color:#FFD8B3;">
+      <div class="icon">
+        <img src="article (1).svg" alt="">
+      </div>
+      <div class="text" style="padding-right: 2rem;">
+       <!--  <h3 class="heading">Blog Topic One</h3> -->
+        <p>
+          RGC successfully concluded the Donation Drive on 16th March 2021. We started of with setting the desks 
+up, promoting and convincing people to donate what they deem fit and to our awe, we had 250+ donated 
+items at the end of day 2. The members then spent days sorting everything that had been collected and 
+eventually we donated all the items. From shoes to pillows, and toothbrush to apparels, we had it all and 
+we donated it all. The staff, here at Manipal University Jaipur (Hostel Campus), was given the option to 
+choose what they like, be it for themselves or their families. In the end, the feeling of joy and the smiles 
+we helped with gave us another motive to continue the work here at RGC. 
+Note: All safety precautions were taken. The items donated were sanitized beforehand.
+        </p>
+      
+
+        </div>
+        </div>
+  </div>
+
+  <button style="margin-bottom: 30px;" type="button" class="btn btn-danger btn-lg btn-block" data-toggle="collapse" data-target="#demo" aria-controls="demo" 
+  >Rotary Reconnect Week</button>
+  <div class="col-md-12 collapse" id="demo" style="padding-top: 2rem!important;">
+    <div  class="service left-icon probootstrap-animate"  style="border-radius: 2rem; border: 10rem; background-color:#FFD8B3;">
+      <div class="icon">
+        <img src="article (1).svg" alt="">
+      </div>
+      <div class="text" style="padding-right: 2rem;">
+       <!--  <h3 class="heading">Blog Topic One</h3> -->
+        <p>
+          Do not count the years, count the memories. Each year, Rotary celebrates #rotaryreconnectweek where former Rotary program participants and scholars like Rotary Scholars, ex-Rotaractors, and Interactors reunite with the Rotary community. The event was hosted by RGC from 5th October 2020 to 11th October 2020. This is a week to see how Rotary shapes lives in the community and around the world. During the week we asked our Alumni to share their experiences and how their journey has been with RGC.
+        </p>
+      
+
+        </div>
+        </div>
+  </div>
+
+
+  <button style="margin-bottom: 30px;" type="button" class="btn btn-danger btn-lg btn-block" data-toggle="collapse" data-target="#demo" aria-controls="demo" 
+  >Mindly Sane - Art as a stress reliever</button>
+  <div class="col-md-12 collapse" id="demo" style="padding-top: 2rem!important;">
+    <div  class="service left-icon probootstrap-animate"  style="border-radius: 2rem; border: 10rem; background-color:#FFD8B3;">
+      <div class="icon">
+        <img src="article (1).svg" alt="">
+      </div>
+      <div class="text" style="padding-right: 2rem;">
+       <!--  <h3 class="heading">Blog Topic One</h3> -->
+       <p>
+        The main theme of the webinar was “Art speaks where words are not able to explain.” The creative art engages everyone’s minds and senses. They invite children to listen, observe, move, solve problems, and imagine using multiple modes of thought and self-expression. After spending more than half of the year at home, everyone has been feeling stressed out and anxious about the near future. Hence, to boost everyone’s mood RGC in collaboration with Fortis Mental Healthcare organized “Mindly Sane – An Interactive Webinar Series” to help everyone relieve from the stress and anxiety. Ms. Tanushree Sangma was our first eminent speaker for the above-mentioned webinar. She is a Psychologist & Expressive Art Based Therapist at Department of Mental Health and Sciences, Fortis Healthcare. The main aim was to deal with the psychological problems everyone is facing due to COVID-19 through art and craft.
+       </p>
+      
+
+        </div>
+        </div>
+  </div>
+
+  <button style="margin-bottom: 30px;" type="button" class="btn btn-danger btn-lg btn-block" data-toggle="collapse" data-target="#demo" aria-controls="demo" 
+  >Mindly Sane - Coping with Conflicts</button>
+  <div class="col-md-12 collapse" id="demo" style="padding-top: 2rem!important;">
+    <div  class="service left-icon probootstrap-animate"  style="border-radius: 2rem; border: 10rem; background-color:#FFD8B3;">
+      <div class="icon">
+        <img src="article (1).svg" alt="">
+      </div>
+      <div class="text" style="padding-right: 2rem;">
+       <!--  <h3 class="heading">Blog Topic One</h3> -->
+       <p>
+        The main theme of the event was “One good conversation can shift the direction of a relationship and change it forever.” Improving the relationship/bond between family members is an important part of our life. During the pandemic and stay-at-home order, we had to spend more time with our loved ones, but as time goes by, we found out that being together, or 24 hours increased the chances of family conflicts. Therefore, to help everyone cope with this difficulty, RGC in collaboration with Fortis Mental Health Care organized the “Mindly Sane – An Interactive Webinar Series” to help everyone through this difficult time. 
+
+        Ms. Akansha Pandey was our eminent speaker for webinar “Coping with Conflicts”. She is currently working as a consultant psychologist at Department of Mental Health and Sciences, Fortis Healthcare. The main aim was to deal with the psychological problems and conflicts everyone had been facing within their family due to pandemic stress. 
+       </p>
+      
+
+        </div>
+        </div>
+  </div>
+
+
+  <button style="margin-bottom: 30px;" type="button" class="btn btn-danger btn-lg btn-block" data-toggle="collapse" data-target="#demo" aria-controls="demo" 
+  >Independence Day Challenges</button>
+  <div class="col-md-12 collapse" id="demo" style="padding-top: 2rem!important;">
+    <div  class="service left-icon probootstrap-animate"  style="border-radius: 2rem; border: 10rem; background-color:#FFD8B3;">
+      <div class="icon">
+        <img src="article (1).svg" alt="">
+      </div>
+      <div class="text" style="padding-right: 2rem;">
+       <!--  <h3 class="heading">Blog Topic One</h3> -->
+        <p>
+          LEAFLET PATRIOTISM: It was the art challenge where people could participate and showcase their artistic skills and their inner patriot.
+
+Day 2:
+
+• ROUTE TO ROOTS CHALLENGE: It was the poetry challenge where people could bring out their inner poet and write a revolutionary literary piece, after all Independence is an emotion and without penning it down it is incomplete.
+
+ Day 3:
+
+• FREEDOM TRIVIA: A fun quiz about India and its freedom struggle was also organized that will jog your memory of famous movements, the constitution, the leaders, and other events.
+        </p>
+      
+
+        </div>
+        </div>
+  </div>
+
+  <button style="margin-bottom: 30px;" type="button" class="btn btn-danger btn-lg btn-block" data-toggle="collapse" data-target="#demo" aria-controls="demo" 
+  >Suicide Prevention Webinar</button>
+  <div class="col-md-12 collapse" id="demo" style="padding-top: 2rem!important;">
+    <div  class="service left-icon probootstrap-animate"  style="border-radius: 2rem; border: 10rem; background-color:#FFD8B3;">
+      <div class="icon">
+        <img src="article (1).svg" alt="">
+      </div>
+      <div class="text" style="padding-right: 2rem;">
+       <!--  <h3 class="heading">Blog Topic One</h3> -->
+      <p>
+        “There's always a hope, even if your brain tells you there isn’t!!”  
+
+Many people experience thoughts of suicide at some point in their lives.   Feeling suicidal is not a character flaw, and it does not mean you are crazy or weak. It only signifies that you are experiencing more pain or sadness than you can cope with right now.  
+
+To sensitize the youth about the importance of their invaluable lives, Rotaract Green Club organised an interactive webinar on “Suicide Prevention” in collaboration with Zariya Mental Health Care. 
+
+The speakers for this session were Ms Ishita Gogia and Ms Harshita Sharma who highlighted the risk, causes and prevention for suicidal thoughts.  
+
+Explanation about coping with suicidal thoughts: -  
+
+The following are some suicide prevention tips recommended by  
+
+Do not Discount Their Feelings  
+
+Look at Suicide as a Cry for Help  
+
+Be a Good Listener  
+
+Encourage Them to Get Help for Their Depression  
+
+Do not Be Afraid to Ask About Their Suicidal Feelings  
+
+  
+
+If They Are in Danger, Don't Leave Them Alone  
+
+Encourage Them to See a Mental Health Professional  
+
+Know That Secrets Can Kill  
+      </p>
+      
+
+        </div>
+        </div>
+  </div>
+
+<!--   
+  <div class="row" style="padding-bottom: 5rem; padding-top: 2rem; ">
+  
+  <button type="button" class="btn btn-dark" data-toggle="collapse" data-target=".collapseevents" aria-controls="events1 events2" 
+  style="width: 120rem; padding-bottom: 3rem; padding-top: 3rem;" >EVENTS</button> -->
+    <!-- <div class="collapse" id="events1"  style="padding-bottom: 3rem; width: 2rem; padding-top: 2rem;  margin-right: 5rem;"> -->
+  <button type="button" class="btn btn-danger btn-lg btn-block" data-toggle="collapse" data-target="#demo" aria-controls="demo" 
+  >UBA</button>
+  
+  <div class="col-md-12 collapse" id="demo" style="padding-top: 2rem!important;">
+    <div  class="service left-icon probootstrap-animate"  style="border-radius: 2rem; border: 10rem; background-color:#FFD8B3;">
+      <div class="icon">
+        <img src="article (1).svg" alt="">
+      </div>
+      <div class="text" style="padding-right: 2rem;">
+       <!--  <h3 class="heading">Blog Topic One</h3> -->
+        <p>
+          Under the Unnat Bharat Abhiyan (UBA) 2019, a government program, a survey was conducted on
+the residents of the village to identify and help eradicate the troubles and problems being faced
+by the villagers.</p><p>
+On the 19th of January, The RGC Team consisting of students from Manipal University Jaipur
+visited the villages Thikariya, Sanjharia, Begus, Dehmi Khurd and Dahmi Kalan. The team was
+supposed to visit each house in the village and enquire regarding their everyday problems like
+sanitation, unemployment etc.</p><p>
+The Survey highlighted the various issues of the villagers such as limited supply of water and
+electricity, unavailability of goods on subsidized rates except wheat, lack of proper drainage system
+and garbage disposal and sanitization, water logging, poor quality of roads, absence of well settled
+jobs and economic crisis being faced by many and unavailability of proper transportation facilities
+for those travelling far for work.</p><p>
+Some of the Solutions proposed by RGC to eradicate the issues include deployment of hand pumps
+and water filters to help purify the water , reduction of electricity price and increasing it's duration,
+setting of Solar Panels, building hospitals and schools in these villages, proper construction and
+management of drainage System to reduce water borne diseases, providing government jobs with
+proper pay to reduce poverty, conduct awareness programs regarding sanitation issues and
+providing better, faster and frequent means of transportation.</p><p>
+Not only did this scheme prove beneficial for raising the issues faced by the villagers, it also
+served as an interface between the government and it's citizens.
+        </p>    
+          <!--                      
+        <div class="form-group" style="padding-right: 7.5rem;padding-top: 5rem;">
+          <div class="icon">
+              <img src=" comment (1).svg " alt="">
+          </div>
+          <div class="text">
+          <h3>Comments</h3>
+          <div>
+            <ul id="item">
+                <!-- <li><h4>name 1</h4><h5> comment 1</h5></li>
+                <li><h4>name 2</h4><h5> comment 2</h5></li> 
+                <div id="data"></div>
+            </ul>
+          </div>
+          </div>
+        </div>
+        <div class="form-group" style="max-width: 15rem;">
+            <label for="name">Name</label>
+            <input type="name" class="form-control" id="blogname" name="email">
+          </div>
+        <div class="form-group" style="padding-right: 7.5rem;">
+          <label for="message">Add Your Comment</label>
+          <textarea cols="30" rows="10" class="form-control" id="blogcomment" name="message"></textarea>
+        </div>
+  
+        <div class="form-group">
+          <button
+          id="blogsubmit" 
+          type="submit" 
+          style="color: green;background-color: black;border-radius: 1rem;" 
+          name="submit">Comment</button>
+        </div> -->
+      </div>
+      
+    </div>
+  </div> 
+  
+  
+  
+<!--   <div class="collapse collapseevents" id="events2"  style="padding-bottom: 5rem; padding-right: 5rem; width: 2rem ;margin-right: 5rem; "> -->
+  <div style="padding-top: 2rem;">
+  <button type="button" class="btn btn-danger btn-lg btn-block" data-toggle="collapse" aria-expanded="false" aria-controls="demo2" data-target="#demo2" 
+>Cleanliness Drive</button>
+</div>
+   <div class="col-md-12 collapse" id="demo2"style="padding-top: 2rem!important;">
+     <div class="service left-icon probootstrap-animate"  style="border-radius: 2rem; background-color:#FFD8B3;">
+       <div class="icon">
+         <img src="article (1).svg" alt="">
+       </div>
+       <div class="text" style="padding-right: 2rem;">
+         <!-- <h3 class="heading">Blog Topic Two</h3> -->
+         <p>Remember the kindergarten lessons about always throwing waste in a dustbin? Gradually, we were taught to keep our bedrooms, our classrooms, 
+           and even our neighborhood tidy. As much as individual efforts are necessary, collective action is even better.</p>
+
+          <p> "A clean India would be the best tribute India could pay to Mahatma Gandhi on his 150th birth anniversary in 2019", said Shri Narendra Modi as he launched the Swacch Bharat Mission at Rajpath in New Delhi. On 2nd October 2014 Swacch Bharat Mission was launched throughout length and breadth of the country as a national movement. 
+          That's exactly why Rotaract Green Club, MUJ under the guidance of Directorate Students Welfare, took the charge of cleaning their locality. 
+        </p>
+          
+          <p> The drive started from the Medical Centre, near water tank and ended at Vijaya Bank Dehmi Kalan village. Students along with few administrative leaders and few faculty members volunteered for the noble cause of cleaning environment. The group conversed with the nearby shopkeepers, made them aware about better waste disposal methods and heard the problems they have been facing in this regard. The students and teachers also spread the awareness in the village school where the children were excited and motivated to help for the cause. 
+          Any initiative sees challenges but the success of any endeavour rests on the joint participation of a team!</p>     
+         <!-- <div class="form-group" style="padding-right: 7.5rem;padding-top: 5rem;">
+           <div class="icon">
+               <img src="comment (1).svg" alt="">
+           </div>
+           <div class="text">
+           <h3>Comments</h3>
+           <ul>
+               <li><h4>name 1</h4><h5> comment 1</h5></li>
+               <li><h4>name 2</h4><h5> comment 2</h5></li>
+           </ul>
+           </div>
+       </div> -->
+       <!-- <div class="form-group" style="max-width: 30rem;">
+           <label for="name">Name</label>
+           <input type="name" class="form-control" id="email" name="email">
+         </div> -->
+        <!--  <div class="form-group" style="padding-right: 7.5rem;">
+           <label for="message">Add Your Comment</label>
+           <textarea cols="30" rows="10" class="form-control" id="message blogcomment" name="message"></textarea>
+         </div> -->
+         <!-- <div class="form-group">
+           <button onclick="writeData()" 
+           id="submit blogsubmit" 
+           type="submit" 
+           style="color: green;background-color: black;border-radius: 1rem;" 
+           name="submit">Comment</button>
+         </div> -->
+         
+       </div>
+     </div>
+   </div>
+
+
+   <div style="padding-top: 2rem;">
+    <button type="button" class="btn btn-danger btn-lg btn-block" data-toggle="collapse" aria-expanded="false" aria-controls="demo3" data-target="#demo3" 
+  >Plantation Drive</button>
+  </div>
+     <div class="col-md-12 collapse" id="demo3"style="padding-top: 2rem!important;">
+       <div class="service left-icon probootstrap-animate"  style="border-radius: 2rem; background-color:#FFD8B3;">
+         <div class="icon">
+           <img src="article (1).svg" alt="">
+         </div>
+         <div class="text" style="padding-right: 2rem;">
+           <!-- <h3 class="heading">Blog Topic Two</h3> -->
+           <p>
+            As the ancient Greek proverb says “a society grows great when old men plant trees in whose shade they know they shall never sit.” If you're reading this, you already know the feeling of dirt on your hands after planting a tree. When you plant a tree, you are adding beauty, oxygen and habitat to the world; you are planting hope for the future.
+            </p>  <p>
+            "One must remember that the happiest people are not those getting more, but those giving more" In the light of the above saying, and as a part of DaanUtsav, 2019, a plantation drive was organised on 5th October 2019 in Government Primary School, Ramsinghpura, Begas, Jaipur. The Directorate of Student Welfare, MUJ in collaboration with Rotaract Green Club, MUJ planted 50 saplings in the area. Trees have long been a subject of interest and a topic of discussion - and it's no wonder; they represent life, growth, peace, and nature. The self satisfaction and happiness that one feels after planting a sapling is none to other.
+            </p> <p>
+            This drive was led by Dr. H C Shiva Prasad, Director, SAMM, Prof. Anjaiah Devineni, HOD, Dept. of Automobile, Mr. Hemant Kumar, Assistant Professor, Dept. of Mechatronics, Mr. Mukesh Kumar Kumawat, Lab-Assistant, Dr. Manik Konch, Assistant professor, Dept. of Philosophy and Mr. Satish Namdev, Assistant Professor, Dept. of Automobile.
+            Also, there has to be some thought and planning that goes into it—not just haphazardly planting trees where there is space. One wants to restore the natural ecosystems, not reforest the entire world. The guests of this event, were made aware about the well-being and utility of this event.
+            </p><p>
+            It's not just about planting, the real action is how well one takes care of it till it grows up into a big tree. With the promise to take care of the saplings and visit after a month to see the progress, the club thanked Prof. G L Sharma, Dean, Directorate of Student Welfare and the faculty members for providing this opportunity to contribute in DaanUtsav2019. 
+            Afterall, the creation of a thousand forests is in one acorn.
+           </p>
+           
+         </div>
+       </div>
+     </div>
+
+
+
+     <div style="padding-top: 2rem;">
+      <button type="button" class="btn btn-danger btn-lg btn-block" data-toggle="collapse" aria-expanded="false" aria-controls="demo4" data-target="#demo4" 
+    >RYLA</button>
+    </div>
+       <div class="col-md-12 collapse" id="demo4"style="padding-top: 2rem!important;">
+         <div class="card service left-icon probootstrap-animate"  style="border-radius: 2rem; background-color:#FFD8B3;">
+           <div class="icon">
+             <img src="article (1).svg" alt="">
+           </div>
+           <div class="text" style="padding-right: 2rem;">
+             <!-- <h3 class="heading">Blog Topic Two</h3> -->
+             <p>
+              The members of Rotaract Green Club, MUJ attended a RYLA (Rotary Youth Leadership Awards) event
+              hosted by the Rotary clubs of Jaipur, Bapunagar and Jaipur south of RID3054 from Friday 10th to Sunday
+              12th Jan 2020 at Arya college of engineering and technology, Kukas (Jaipur, Rajasthan). It was a youth-
+              oriented event and all youth aged 14 to 30 (Rotaractors/ Non-Rotaractors) participated.</p><p>
+              The three-day event included various seminars taken up by Rotarians such as Pragya Mehta (District
+              Chair), Vikram Sharma, Shobha Gupta, Vipin Bahl (President of Rotaract club, Bapunagar) and many more.
+              The workshops included many interactive sessions for our youth and the enthusiasm exhibited by the
+              participants was tremendous.</p><p>
+              The prizes were distributed to the winners of different competitions and mementos were given to the
+              respective Rotarians. Swapnil Gupta and Anurag Nath of Rotaract Green Club, MUJ received an award for
+              Special Recognition - presented to those who communicated the most and were enthusiastic about being
+              the team leader for all the fun team building exercises. The team received an award for best interaction
+              with the speakers and also bagged the 2nd place in the Rotary Quiz held by RYLA.</p><p>
+              Overall it was a fun event with a lot of learning opportunities and the Rotaract Green Club, MUJ looks
+              forward to attending many more such events and help make a difference.
+             </p>
+             
+           </div>
+         </div>
+       </div>
+
+
+
+
+
+    </div> 
+  </div> 
+  </div>
+  </div>
+  </section>
+  
+  
+  
+  
+  <div class="gototop js-top">
+    <a href="#" class="js-gotop"><i class="icon-chevron-thin-up"></i></a>
+  </div>
+  
+  
+  
+    <footer id="footer" class="probootstrap-footer " style="background-color: rgb(0,154,61);">
+      <!-- probootstrap-bg -->
+      <div class="container">
+        <h3 style="font-weight: bolder; color:rgba(243, 240, 240, 0.918);">Developers</h3>
+        <h5 style="font-weight: bold;">Kartik Soni | Amisha Gupta | Sagarika Choudhary</h5>
+        <h5 style="margin-top: 20px; margin-bottom: 15px;">Club's Social Media</h5>
+        <div class="social-links">
+          
+          <a href="https://www.facebook.com/GreenClubMUJ/" class="icon-button facebook"><i class="icon-facebook"></i><span></span></a>
+          <a href="https://instagram.com/rotaractgreenclubmuj?igshid=e66jw3jectqr" class="icon-button instagram"><i class="icon-instagram2"></i><span></span></a>
+          <a href="https://www.linkedin.com/company/rotaract-green-club-muj/" class="icon-button linkedin"><i class="icon-linkedin"></i><span></span></a>
+        
+        </div>
+        
+        <div class="credits">
+          
+        </div>
+      </div>
+    </footer><!-- End Footer -->
+  </body>
+  
+  <script src="js/scripts.min.js"></script>
+  <script src="js/main.min.js"></script>
+  <script src="js/custom.js"></script>
+  <script src="../virb/js/counter.js"></script>
+  <script src="https://unpkg.com/boxicons@latest/dist/boxicons.js"></script>
+
+  <script src="js/jquery-1.11.3.min.js"></script>
+  
+  </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,565 @@
+<!-- ABOUT.HTML -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>About</title>
+    <meta name="description" content="RGC" />
+    <meta name="keywords" content="Rotaract Green Club MUJ" />
+
+    <!-- <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400" rel="stylesheet"> -->
+    <link rel="stylesheet" href="css/styles-merged.css" />
+    <link rel="stylesheet" href="css/style.min.css" />
+    <link rel="stylesheet" href="css/custom.css" />
+
+    <!-- Favicons -->
+    <link href="./logowhite.jpeg" rel="shortcut icon" type="image/png" />
+
+    <script src="https://www.gstatic.com/firebasejs/7.16.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.16.1/firebase-auth.js"></script>
+
+    <script src="jslanding.js"></script>
+
+    <!--[if lt IE 9]>
+      <script src="js/vendor/html5shiv.min.js"></script>
+      <script src="js/vendor/respond.min.js"></script>
+    <![endif]-->
+    <style>
+      #footer {
+        background: #14151c;
+        color: black;
+        font-size: 14px;
+        text-align: center;
+        padding-top: 5%;
+        padding-right: 0px;
+        padding-bottom: 2%;
+        padding-left: 0px;
+      }
+
+      #footer h3 {
+        font-size: 36px;
+        font-weight: 700;
+        color: black;
+        position: relative;
+        font-family: 'Poppins', sans-serif;
+        padding: 0;
+        margin: 0 0 15px 0;
+      }
+
+      #footer p {
+        font-size: 15;
+        font-style: italic;
+        padding: 0;
+        margin: 0 0 40px 0;
+      }
+
+      #footer .social-links {
+        margin: 0 0 40px 0;
+      }
+
+      #footer .social-links a {
+        font-size: 18px;
+        display: inline-block;
+        background: black;
+        color: #000000;
+
+        padding: 8px 0;
+        margin-right: 4px;
+        border-radius: 50%;
+        text-align: center;
+        width: 36px;
+        height: 36px;
+        transition: 0.3s;
+      }
+
+      #footer .social-links a:hover {
+        background: #22eaaa;
+        color: #fff;
+        text-decoration: none;
+      }
+
+      #footer .copyright {
+        margin: 0 0 5px 0;
+      }
+
+      #footer .credits {
+        font-size: 13px;
+      }
+
+      /* Wrapper */
+      .icon-button {
+        background-color: white;
+        border-radius: 3.6rem;
+        cursor: pointer;
+        display: inline-block;
+        font-size: 2rem;
+        height: 3.6rem;
+        line-height: 3.6rem;
+        margin: 0 5px;
+        position: relative;
+        text-align: center;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        width: 3.6rem;
+      }
+
+      /* Circle */
+      .icon-button span {
+        border-radius: 0;
+        display: block;
+        height: 0;
+        left: 50%;
+        margin: 0;
+        position: absolute;
+        top: 50%;
+        -webkit-transition: all 0.3s;
+        -moz-transition: all 0.3s;
+        -o-transition: all 0.3s;
+        transition: all 0.3s;
+        width: 0;
+      }
+      .icon-button:hover span {
+        width: 3.6rem;
+        height: 3.6rem;
+        border-radius: 3.6rem;
+        margin: -1.8rem;
+      }
+      .instagram span {
+        background-color: #791697;
+      }
+      .facebook span {
+        background-color: #3b5998;
+      }
+      .github span {
+        background-color: #db9b3c;
+      }
+      .linkedin span {
+        background-color: #3c54dbd0;
+      }
+      /* Icons */
+      .icon-button i {
+        background: none;
+        color: white;
+        height: 3.6rem;
+        right: -0.75rem;
+        line-height: 2.2rem;
+        position: absolute;
+        top: 0;
+        -webkit-transition: all 0.3s;
+        -moz-transition: all 0.3s;
+        -o-transition: all 0.3s;
+        transition: all 0.3s;
+        width: 3.6rem;
+        z-index: 10;
+      }
+      .icon-button .icon-instagram2 {
+        color: #791697;
+      }
+      .icon-button .icon-facebook {
+        color: #3b5998;
+      }
+      .icon-button .icon-github {
+        color: #db9b3c;
+      }
+      .icon-button .icon-linkedin {
+        color: #3c54dbd0;
+      }
+      .icon-button:hover .icon-instagram2,
+      .icon-button:hover .icon-facebook,
+      .icon-button:hover .icon-github,
+      .icon-button:hover .icon-linkedin {
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- START: header -->
+
+    <div class="probootstrap-loader"></div>
+
+    <header role="banner" class="probootstrap-header">
+      <div class="container">
+        <a href="index.html" class="probootstrap-logo"><img style="height: 150px;width: 150px; border-radius: 50%;" src="logowhite.jpeg"></a>
+
+        <a href="#" class="probootstrap-burger-menu visible-xs"><i>Menu</i></a>
+        <div class="mobile-menu-overlay"></div>
+
+        <nav role="navigation" class="probootstrap-nav hidden-xs">
+          <ul class="probootstrap-main-nav">
+            <li><a href="index.html">Home</a></li>
+            <li class="active"><a href="about.html">About</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="QnA.html">QnA</a></li>
+            <li><a href="team.html">Team</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+          <ul class="probootstrap-right-nav hidden-xs">
+            <li>
+              <a href="#"><i class="icon-twitter"></i></a>
+            </li>
+            <li>
+              <a href="https://www.facebook.com/GreenClubMUJ/" target="_blank"
+                ><i class="icon-facebook2"></i
+              ></a>
+            </li>
+            <li>
+              <a
+                href="https://www.instagram.com/greenclubmuj/?igshid=h9r3d4o32bvz"
+                target="_blank"
+                ><i class="icon-instagram2"></i
+              ></a>
+            </li>
+            <!-- <li>
+              <div class="form-group">
+                <button
+                  onclick="signOut()"
+                  id="signout submit"
+                  type="submit"
+                  class="btn btn-primary"
+                  name="submit"
+                >
+                  SignOut
+                </button>
+              </div>
+            </li> -->
+          </ul>
+          <div class="extra-text visible-xs">
+            <a href="#" class="probootstrap-burger-menu"><i>Menu</i></a>
+            <h5>Address</h5>
+            <p>
+              Jaipur-Ajmer Express Highway, Dehmi Kalan, Near GVK Toll Plaza,
+              Jaipur, Rajasthan 303007
+            </p>
+            <h5>Connect</h5>
+            <ul class="social-buttons">
+              <li>
+                <a href="#"><i class="icon-twitter"></i></a>
+              </li>
+              <li>
+                <a href="https://www.facebook.com/GreenClubMUJ/" target="_blank"
+                  ><i class="icon-facebook2"></i
+                ></a>
+              </li>
+              <li>
+                <a
+                  href="https://www.instagram.com/greenclubmuj/?igshid=h9r3d4o32bvz"
+                  target="_blank"
+                  ><i class="icon-instagram2"></i
+                ></a>
+              </li>
+              <!-- <li>
+                <div class="form-group">
+                  <button
+                    onclick="signOut()"
+                    id="signout submit"
+                    type="submit"
+                    class="btn btn-primary"
+                    name="submit"
+                  >
+                    SignOut
+                  </button>
+                </div>
+              </li> -->
+            </ul>
+          </div>
+        </nav>
+      </div>
+    </header>
+    <!-- END: header -->
+    <section class="probootstrap-slider flexslider">
+      <ul class="slides">
+        <li style="background-image: url(header.jpeg);" class="overlay2">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-12 text-center">
+                <div
+                  class="slides-text probootstrap-animate"
+                  data-animate-effect="fadeIn"
+                >
+                  <h2><strong>About us</strong></h2>
+                  <p>
+                    The <strong>Rotaract Green club</strong> is a non profit
+                    organization at Manipal University Jaipur . The club is
+                    aimed at inculcating awareness and incubating an environment
+                    of social service in the university. It is one of the most
+                    prestigious and respected organizations of MUJ. RGC has an
+                    active presence in the social sector and has been organizing
+                    social welfare related activities and programs in the
+                    University.
+                  </p>
+                  <br> <br>
+                  <p><i>Scroll below to learn more</i></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </section>
+    <!-- END: slider  -->
+
+    <section class="probootstrap-section">
+      <div class="container">
+        <div class="text">
+          <h1 class="heading" style="text-align: center;"><strong>WHO WE ARE</strong></h3>
+            <br>
+          <p style="text-align:justify">
+            The Rotaract Club of MUJ is a youth social working society formed in order to serve the needy people and nature. The overall outcome of the club is beneficial for both the members and the nation. 
+          <br> Rotaract provides an opportunity to enhance knowledge and skills that will assist them in personal development, to address the physical and social needs of their communities, and promote better relations through framework of friendship and service.
+          </p>
+        </div>
+        <br> <br>
+        <div class="text">
+          <h1 class="heading" style="text-align: center;"><strong>VILLAGES UNDER US<strong></h3>
+            <br>
+            <div class="row text-center" style="display:flex; flex-wrap: wrap;">
+                  <div class="col-md-4 col-sm-6">
+                      <div class="thumbnail" style="padding-bottom: 0px">
+                         <img src="Dehmi Kalan.jpg">
+                         <div class="caption" style="padding-bottom: 0px">
+                             <h1><i><strong>Dehmi Kalan</strong></i></h1>
+                         </div>
+                      </div>
+                  </div>
+                  <div class="col-md-4 col-sm-6">
+                    <div class="thumbnail" style="padding-bottom: 0px">
+                       <img src="Dehmi Khurd.jpg">
+                       <div class="caption" style="padding-bottom: 0px">
+                        <h1><i><strong>Dehmi Khurd</strong></i></h1>
+                       </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6">
+                  <div class="thumbnail" style="padding-bottom: 0px">
+                     <img src="Sanjharia.jpg" style="height: 235px;">
+                     <div class="caption" style="padding-bottom: 0px">
+                      <h1><i><strong>Sanjharia</strong></i></h1>
+                     </div>
+                  </div>
+              </div>
+              <div class="col-md-4 col-sm-6">
+                <div class="thumbnail" style="padding-bottom: 0px">
+                   <img src="Thikariya2.jpg" style="height: 235px;">
+                   <div class="caption" style="padding-bottom: 0px;">
+                    <h1><i><strong>Thikariya</strong></i></h1>
+                   </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-6">
+              <div class="thumbnail" style="padding-bottom: 0px">
+                 <img src="Begas.jpg">
+                 <div class="caption" style="padding-bottom: 0px">
+                  <h1><i><strong>Begas</strong></i></h1>
+                 </div>
+              </div>
+          </div>
+          </div>
+
+        </div>
+
+        <div class="row">
+          <div
+            class="col-md-12 text-center section-heading probootstrap-animate"
+          >
+          <br>
+            <h1><strong>ALBUM</strong></h1>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4 probootstrap-animate">
+            <div class="probootstrap-card with-hover">
+              <div class="probootstrap-card-media">
+                  <img
+                    src="https://scontent.fstv1-1.fna.fbcdn.net/v/t1.6435-9/84315869_1428878673939995_8377797309617930240_n.jpg?_nc_cat=108&ccb=1-3&_nc_sid=8bfeb9&_nc_ohc=vMIx4u2pjggAX9C5riV&_nc_ht=scontent.fstv1-1.fna&oh=d0d48ba4646060d38555daedbd677594&oe=60D2D88B"
+                    class="img-responsive img-border"
+                    alt="RGC event"
+                /></a>
+              </div>
+              <div class="probootstrap-card-text">
+                <h2 class="probootstrap-card-heading mb0">Annual Trek 2020</h2>
+                <p class="category">Members went on a trek to the Aravali range in February 2020</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 probootstrap-animate">
+            <div class="probootstrap-card with-hover">
+              <div class="probootstrap-card-media">
+                  <img
+                    src="https://scontent.fstv1-1.fna.fbcdn.net/v/t1.6435-9/83459812_1423655861128943_973811124866646016_n.jpg?_nc_cat=104&ccb=1-3&_nc_sid=8bfeb9&_nc_ohc=pKJj6pCNyoYAX_8ewME&_nc_ht=scontent.fstv1-1.fna&oh=8ad55023e2d0c09579e3cd5acf0120e4&oe=60D36912"
+                    class="img-responsive img-border"
+                    alt="RGC event"
+                /></a>
+              </div>
+              <div class="probootstrap-card-text">
+                <h2 class="probootstrap-card-heading mb0">71st Republic Day event</h2>
+                <p class="category">Our club in collaboration with the Government Senior Secondary School, Begas, organized an event for the school's students. </p>
+              </div>
+            </div>
+          </div>
+  
+          <div class="col-md-4 probootstrap-animate">
+            <div class="probootstrap-card with-hover">
+              <div class="probootstrap-card-media">
+                  <img
+                    src="https://scontent.fstv1-1.fna.fbcdn.net/v/t1.6435-9/82940563_1411841838977012_5908238260273938432_n.jpg?_nc_cat=101&ccb=1-3&_nc_sid=8bfeb9&_nc_ohc=9tlXbEKMp2UAX_SeYyN&_nc_ht=scontent.fstv1-1.fna&oh=cfa73db8829455370745945108a2e33a&oe=60D20167"
+                    class="img-responsive img-border"
+                    alt="RGC event"
+                /></a>
+              </div>
+              <div class="probootstrap-card-text">
+                <h2 class="probootstrap-card-heading mb0">Rotary Youth Leadership Awards (RYLA)</h2>
+                <p class="category">Our members attended a RYLA event hosted by the Rotary clubs of Jaipur, Bapunagar and Jaipur south of RID3054</p>
+    
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div
+              class="col-md-12 text-center section-heading probootstrap-animate"
+            >
+            <br>
+              <h1><strong>Other past events</strong></h1>
+            </div>
+          </div>
+    
+          <div class="col-md-4 probootstrap-animate">
+            <div class="probootstrap-card with-hover">
+              
+              <div class="probootstrap-card-text">
+                <h2 class="probootstrap-card-heading mb0">Letterhead exchange</h2>
+                <p class="category">Rotaract Green Club of MUJ exchanged Letterhead with Rotaract Club of Amanora Go-Getters, Pune.</p>
+    
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 probootstrap-animate">
+            <div class="probootstrap-card with-hover">
+             
+              <div class="probootstrap-card-text">
+                <h2 class="probootstrap-card-heading mb0">Plantation drive, Begas</h2>
+                <p class="category">As a part of DaanUtsav, 2019, a plantation drive was organised on 5th October 2019 in Government Primary School, Ramsinghpura, Begas.</p>
+    
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 probootstrap-animate">
+            <div class="probootstrap-card with-hover">
+            
+              <div class="probootstrap-card-text">
+                <h2 class="probootstrap-card-heading mb0">Cleanliness drive</h2>
+                <p class="category">Following swacch bharat mission, a "Cleanliness Drive" was scheduled on 2nd October,2019 under the guidance of Directorate Student's Welfare, Manipal University Jaipur in collaboration with Rotaract Green Club, MUJ. </p>
+    
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-4 probootstrap-animate">
+            <div class="probootstrap-card with-hover">
+       
+              <div class="probootstrap-card-text">
+                <h2 class="probootstrap-card-heading mb0">Passport awareness seminar</h2>
+                <p class="category">To explain the importance and procedures involved in an otherwise seemingly simple task. Mr. Janak Singh and Mr. Vishal Verma, from TCS explained all details.</p>
+    
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 probootstrap-animate">
+            <div class="probootstrap-card with-hover">
+              <!-- <div class="probootstrap-card-media">
+                  <img
+                    src="https://scontent.fstv4-1.fna.fbcdn.net/v/t1.0-0/p526x395/56935242_1184437401717458_8246463823955886080_n.jpg?_nc_cat=103&_nc_sid=8bfeb9&_nc_ohc=5Akm6U-5Z4sAX-6FoQr&_nc_ht=scontent.fstv4-1.fna&_nc_tp=6&oh=92bbeeb42a4f0a6cee2930203bfaabdc&oe=5F661DE7"
+                    class="img-responsive img-border"
+                    alt="RGC event"
+                /></a>
+              </div> -->
+              <div class="probootstrap-card-text">
+                <h2 class="probootstrap-card-heading mb0">Oral hygiene awareness event</h2>
+                <p class="category">A team of doctors from the Kanishka Dental Clinic was invited to the university to aid the event. The check up was open to all.</p>
+    
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 probootstrap-animate">
+            <div class="probootstrap-card with-hover">
+             
+              <div class="probootstrap-card-text">
+                <h2 class="probootstrap-card-heading mb0">Donation drive</h2>
+                <p class="category">The event, divided into two segments, was a success. The collected material was heap of clothes, shoes and books broadly. </p>
+    
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-4 probootstrap-animate">
+            <div class="probootstrap-card with-hover">
+           
+              <div class="probootstrap-card-text">
+                <h2 class="probootstrap-card-heading mb0">Unnat Bharat Abhyan Survey</h2>
+                <p class="category"> Our team of volunteers not only from the club but from all over the university commenced the task of surveying the 5 villages in our district.</p>
+    
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 probootstrap-animate">
+            <div class="probootstrap-card with-hover">
+           
+              <div class="probootstrap-card-text">
+                <h2 class="probootstrap-card-heading mb0">Blood Donation Camp (BDC)</h2>
+                <p class="category">The club's biggest event. In 2019, over <strong>2100</strong> donations were recorded</p>
+    
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 probootstrap-animate">
+            <div class="probootstrap-card with-hover">
+        
+              <div class="probootstrap-card-text">
+                <h2 class="probootstrap-card-heading mb0">Sports Day for children</h2>
+                <p class="category">We came up with the idea of organizing a sports day as an event for the children. It consisted of 2-3 different types of races. All the children enjoyed competing with each other & it eventually turned out to be an amazing show for everyone.</p>
+    
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- END section -->
+
+    <div class="gototop js-top">
+      <a href="#" class="js-gotop"><i class="icon-chevron-thin-up"></i></a>
+    </div>
+    
+  
+  
+      <footer id="footer" class="probootstrap-footer " style="background-color: rgb(0,154,61);">
+        <!-- probootstrap-bg -->
+        <div class="container">
+          <h3 style="font-weight: bolder; color:rgba(243, 240, 240, 0.918);">Developers</h3>
+          <h5 style="font-weight: bold;">Kartik Soni | Amisha Gupta | Sagarika Choudhary</h5>
+          <h5 style="margin-top: 20px; margin-bottom: 15px;">Club's Social Media</h5>
+          <div class="social-links">
+            
+            <a href="https://www.facebook.com/GreenClubMUJ/" class="icon-button facebook"><i class="icon-facebook"></i><span></span></a>
+            <a href="https://instagram.com/rotaractgreenclubmuj?igshid=e66jw3jectqr" class="icon-button instagram"><i class="icon-instagram2"></i><span></span></a>
+            <a href="https://www.linkedin.com/company/rotaract-green-club-muj/" class="icon-button linkedin"><i class="icon-linkedin"></i><span></span></a>
+          
+          </div>
+          
+          <div class="credits">
+            
+          </div>
+        </div>
+      </footer><!-- End Footer -->
+    </body>
+  
+    <script src="js/scripts.min.js"></script>
+    <script src="js/main.min.js"></script>
+    <script src="js/custom.js"></script>
+    <script src="../virb/js/counter.js"></script>
+    <script src="https://unpkg.com/boxicons@latest/dist/boxicons.js"></script>
+  
+    </body>
+  </html>
